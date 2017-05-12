@@ -5,7 +5,7 @@ import HeaderGameInfo from './header_game_info';
 import GameBoard from './game_board';
 import SideBar from './sidebar';
 
-class App extends Component {
+export default class App extends Component {
   render() {
     return (
       <div>
@@ -21,9 +21,3 @@ class App extends Component {
     );
   }
 }
-
-const mapSateToProps = ({game}) => {
-  return { hello: 'world' };
-};
-
-export default connect(mapSateToProps)(App);

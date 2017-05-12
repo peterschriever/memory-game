@@ -1,14 +1,29 @@
 import {
-  FLIP_CARD,
-  PAIR_FOUND,
-  PICK_COLOR,
-  NEW_GAME,
-  RESIZE_BOARD,
-  CHANGE_CARD_CHAR,
-  END_GAME,
-  UPDATE_TOP_FIVE
+  SET_CARD_COLOR,
+  SET_OPEN_COLOR,
+  SET_FOUND_COLOR
 } from './types';
 
-export const flipCard = (card) => {
-  return { type: FLIP_CARD, payload: card };
-};
+export function setCardColor(color) {
+  console.log("setCardColor:", color);
+  return {
+    type: SET_CARD_COLOR,
+    payload: color
+  }
+}
+
+export function setOpenColor(color) {
+  console.log("setOpenColor:", color);
+  return {
+    type: SET_OPEN_COLOR,
+    payload: color
+  }
+}
+
+export function setFoundColor(color) {
+  console.log("setFoundColor:", color);
+  return {
+    type: SET_FOUND_COLOR,
+    payload: color
+  }
+}

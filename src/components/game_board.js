@@ -5,7 +5,7 @@ import BoardCard from './board_card';
 
 class GameBoard extends Component {
   render() {
-    console.log(this.props.cards);
+    // console.log(this.props.cards);
     return (
       <div>
         TODO: game board
