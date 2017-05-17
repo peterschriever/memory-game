@@ -1,3 +1,10 @@
 export const SET_CARD_COLOR = 'SET_CARD_COLOR';
 export const SET_OPEN_COLOR = 'SET_OPEN_COLOR';
-export const SET_FOUND_COLOR = 'SET_FOUND_COLOR';
+export const SET_PAIRED_COLOR = 'SET_PAIRED_COLOR';
+export const NEW_GAME = 'NEW_GAME';
+export const CHANGE_BOARD_CHAR = 'CHANGE_BOARD_CHAR';
+export const CHANGE_BOARD_SIZE = 'CHANGE_BOARD_SIZE';
+export const OPEN_CARD = 'OPEN_CARD';
+export const START_TIMER = 'START_TIMER';
+export const PAIR_FOUND = 'PAIR_FOUND';
+export const GAMEOVER = 'GAMEOVER';

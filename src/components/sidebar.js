@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setCardColor, setOpenColor, setFoundColor } from '../actions/index';
+import {
+  setCardColor,
+  setOpenColor,
+  setPairedColor,
+  startNewGame,
+  changeBoardChar,
+  changeBoardSize
+} from '../actions/index';
 import MyColorPicker from './my_color_picker';
 
 class SideBar extends Component {
   render() {
-    console.log("colors:",this.props.colors);
      return (
        <table id="meta">
          <tbody>
@@ -28,12 +34,15 @@ class SideBar extends Component {
            </tr>
            <tr>
              <td className="strong" colSpan="2">Gemiddelde speeltijd: </td>
+             {/* TODO: update average playtime */}
              <td>0s (64s)</td>
            </tr>
            <tr>
              <td colSpan="2" className="strong">Karakter op kaarten: </td>
              <td>
-               <select name="character" id="character">
+               <select name="character"
+                 id="character"
+                 onChange={(e) => this.props.changeBoardChar(e.target.value)}>
                  <option value="*">*</option>
                  <option value="#">#</option>
                  <option value="@">@</option>
@@ -46,7 +55,8 @@ class SideBar extends Component {
            <tr>
              <td colSpan="2" className="strong">Afmeting bord: </td>
              <td>
-               <select name="size" id="size">
+               <select name="size" id="size"
+                 onChange={(e) => this.props.changeBoardSize(e.target.value)}>
                  <option value="2">2</option>
                  <option value="4">4</option>
                  <option value="6" defaultValue>6</option>
@@ -63,22 +73,25 @@ class SideBar extends Component {
            </tr>
            <tr>
              <td colSpan="3">
-               <MyColorPicker color={this.props.colors.open}
+               <MyColorPicker color={this.props.colors.opened}
                  title="Open"
                  callback={this.props.setOpenColor} />
              </td>
            </tr>
            <tr>
              <td colSpan="3">
-               <MyColorPicker color={this.props.colors.found}
+               <MyColorPicker color={this.props.colors.paired}
                  title="Gevonden"
-                 callback={this.props.setFoundColor} />
+                 callback={this.props.setPairedColor} />
              </td>
            </tr>
            <tr>
              <td>
                {/* @TODO: call newGame action */}
-               <button className="btn btn-default">
+               <button className="btn btn-default"
+                 onClick={
+                   () => this.props.startNewGame(this.props.boardConfig)
+                 }>
                  Nieuw Spel
                </button>
              </td>
@@ -89,14 +102,22 @@ class SideBar extends Component {
    }
 }
 
-const mapStateToProps = ({colors}) => {
+const mapStateToProps = ({colors, boardConfig}) => {
   return {
-    colors: colors
+    colors,
+    boardConfig
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ setCardColor, setOpenColor, setFoundColor }, dispatch);
+  return bindActionCreators({
+      setCardColor,
+      setOpenColor,
+      setPairedColor,
+      startNewGame,
+      changeBoardChar,
+      changeBoardSize
+    }, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SideBar);

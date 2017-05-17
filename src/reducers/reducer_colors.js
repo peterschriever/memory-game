@@ -1,13 +1,13 @@
 import {
   SET_CARD_COLOR,
   SET_OPEN_COLOR,
-  SET_FOUND_COLOR
+  SET_PAIRED_COLOR
 } from '../actions/types';
 
 const initColors = {
   closed: "#FF0000",
-  open: "#00FF00",
-  found: "#0000FF"
+  opened: "#00FF00",
+  paired: "#0000FF"
 };
 
 export default (state = initColors, action) => {
@@ -15,20 +15,20 @@ export default (state = initColors, action) => {
     case SET_CARD_COLOR:
       return {
         closed: action.payload.hex,
-        open: state.open,
-        found: state.found
+        opened: state.opened,
+        paired: state.paired
       };
     case SET_OPEN_COLOR:
       return {
         closed: state.closed,
-        open: action.payload.hex,
-        found: state.found
+        opened: action.payload.hex,
+        paired: state.paired
       };
-    case SET_FOUND_COLOR:
+    case SET_PAIRED_COLOR:
       return {
         closed: state.closed,
-        open: state.open,
-        found: action.payload.hex
+        opened: state.opened,
+        paired: action.payload.hex
       };
     default:
       return state;

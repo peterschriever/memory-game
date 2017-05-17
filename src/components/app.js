@@ -6,7 +6,7 @@ import GameBoard from './game_board';
 import SideBar from './sidebar';
 
 export default class App extends Component {
-  render() {
+  render() {    
     return (
       <div>
         <header>
